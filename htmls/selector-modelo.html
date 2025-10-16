@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tienda Cofeco</title>
+  <link rel="stylesheet" href="../css/selector-modelo.css">
+</head>
+<body>
+  <header>
+    <h1>Museo 3D Agustin Samper</h1>
+  </header>
+
+  <main class="selector">
+    <div class="modelo3D" data-catalogo="Allen12">
+      <a href="model-viewer.html">
+        <img src="../imgs/Render Allen 12_3.png" alt="Allen12">
+      </a>
+      <h3>ALLEN 12 (PERSONAJE ESTILIZADO)</h3>
+    </div>
+
+    <div class="modelo3D" data-catalogo="Rostro_Humano">
+      <a href="model-viewer.html">
+        <img src="../imgs/Render Escultura Mads.png" alt="Rostro humano">
+      </a>
+      <h3>ESCULTURA DE ROSTRO HUMANO REALISTA</h3>
+    </div>
+
+    <div class="modelo3D" data-catalogo="Monstruo">
+      <a href="model-viewer.html">
+        <img src="../imgs/Render Monstruo_2.png" alt="Monstruo">
+      </a>
+      <h3>ESCULTURA MONSTRUO</h3>
+    </div>
+
+    <div class="modelo3D" data-catalogo="Robot">
+      <a href="model-viewer.html">
+        <img src="../imgs/Render_IA.png" alt="Robot">
+      </a>
+      <h3>ROBOT AMIGABLE</h3>
+    </div>
+
+    <div class="modelo3D" data-catalogo="Escenario">
+        <img src="../imgs/Render Escena Terror.png" alt="Escenario">
+      <h3>ESCENARIO DE TERROR</h3>
+      <h3>NO DISPONIBLE...</h3>
+    </div>
+
+  </main>
+
+  <script>
+    const Allen12 = {
+      nombre: "Allen12",
+      modelos: [
+        "../modelos/Allen12.glb"
+      ]
+    };
+
+    const Rostro_Humano = {
+      nombre: "Rostro_Humano",
+      modelos: [
+        "../modelos/Rostro_humano.glb",
+      ]
+    };
+
+    const Monstruo = {
+      nombre: "Monstruo",
+      modelos: [
+        "../modelos/monstruo.glb"
+      ]
+    };
+
+    const Robot = {
+      nombre: "robot",
+      modelos: [
+        "../modelos/Robot.glb"
+      ]
+    };
+
+    const Escenario = {
+      nombre: "robot",
+      modelos: [
+        "null"
+      ]
+    };
+    
+    const modelos3D = { Allen12, Rostro_Humano, Monstruo, Robot, Escenario };
+
+    document.querySelectorAll('.modelo3D').forEach(modeloEl => {
+      const link = modeloEl.querySelector('a');
+      const key = modeloEl.dataset.catalogo;
+
+      const handler = (e) => {
+        e.preventDefault();
+        const personaje = modelos3D[key];
+        if (!personaje) {
+          console.error('Clave de catálogo no encontrada:', key);
+          return;
+        }
+        try {
+          localStorage.setItem('personaje', JSON.stringify(personaje));
+        } catch (err) {
+          console.error('Error guardando en localStorage:', err);
+        }
+        const href = link?.href || 'model-viewer.html';
+        window.location.href = href;
+      };
+
+      if (link) {
+        link.addEventListener('click', handler);
+      } else if (link.modelos[0] === "null"){
+        modeloEl.style.cursor = 'pointer';
+        modeloEl.addEventListener('click', handler);
+      };
+
+    }); 
+  </script>
+</body>
+</html>

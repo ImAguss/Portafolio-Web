@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Visualización 3D interactiva usando Google Model Viewer">
+  <meta name="author" content="Agustin Samper">
+  <title>Visualizador 3D</title>
+
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
+  <link rel="stylesheet" href="../css/model-viewer.css">
+</head>
+
+<body>
+  <div class ="header-box">
+    <header>
+      <h1>Visualizador 3D By: Agustin Samper</h1>
+      <nav>
+        <a href = "../index.html">Volver al Inicio</a>
+        <a href="../htmls/selector-modelo.html">Volver al Museo</a>
+      </nav>
+    </header>
+  </div>
+
+  <div class="model-viewer-wrapper">
+
+    <div class="controls" role="region" aria-label="Controles del visualizador">
+
+      <label for="hdri" class="controls__label">Seleccionar Fondo:</label>
+      <select id="hdri" class="controls__select">
+        <option value = "null">Sin Fondo</option>
+        <option value="../hdri/christmas_photo_studio_07_2k.hdr">Interior Casa</option>
+        <option value="../hdri/empty_play_room_2k.hdr">Habitacion</option>
+        <option value="../hdri/studio_small_08_1k.hdr">Estudio</option>
+      </select>
+
+
+      <button id="toggle-rotate" class="controls__btn" type="button" aria-pressed="false">Alternar rotación</button>
+    </div>
+
+
+    <section id="Visualizador" class="viewer-container">
+      <model-viewer
+        id="Modelo"
+        alt="Modelo 3d"
+        auto-rotate
+        camera-controls
+        style="background-color: #3C3836"
+        environment-image="neutral"
+        loading="eager"
+        exposure="0.5"
+        shadow-intensity="1"
+        environment-intensity="0.5"
+      ></model-viewer>
+    </section>
+  </div>
+
+  <script src="../scripts/model-viewer.js"></script>
+</body>
+</html>
