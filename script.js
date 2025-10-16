@@ -43,6 +43,10 @@ document.addEventListener('DOMContentLoaded', function() {
         
         const listaProyectos = document.querySelector('.proyectos-programador .lista-proyectos');
         if (listaProyectos) {
+          listaProyectos.style.opacity = '0';
+          listaProyectos.style.maxHeight = '0';
+          listaProyectos.style.display = 'none';
+
             tituloProgramador.addEventListener('click', function() {
                 const isHidden = listaProyectos.style.display === 'none';
                 
