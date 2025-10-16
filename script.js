@@ -56,12 +56,14 @@ document.addEventListener('DOMContentLoaded', function() {
                         listaProyectos.style.opacity = '1';
                         listaProyectos.style.maxHeight = '1000px';
                     }, 10);
+                    tituloProgramador.classList.add('abierto');
                 } else {
                     listaProyectos.style.opacity = '0';
                     listaProyectos.style.maxHeight = '0';
                     setTimeout(() => {
                         listaProyectos.style.display = 'none';
                     }, 300);
+                    tituloProgramador.classList.remove('abierto');
                 }
             });
         }

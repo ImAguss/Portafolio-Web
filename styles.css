@@ -244,6 +244,16 @@ main{
     transition: all 0.3s ease;
 }
 
+.toggle-proyectos.abierto::after {
+    content: '▼';
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.8rem;
+    transition: transform 0.3s ease;
+}
+
 .toggle-proyectos::after {
     content: '▶';
     position: absolute;
