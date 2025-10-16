@@ -36,63 +36,32 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    const toggleTestimoniosBtn = document.getElementById('toggle-testimonios');
-    if (toggleTestimoniosBtn) {
-        toggleTestimoniosBtn.addEventListener('click', function() {
-            const testimonios = document.querySelectorAll('.testimonio');
-            const isHidden = testimonios[0].style.display === 'none' || 
-                            testimonios[0].style.display === '';
-            
-            testimonios.forEach((testimonio, index) => {
-                if (index === 0) return; // El primero siempre visible
+    const tituloProgramador = document.querySelector('.proyectos-programador h3');
+    if (tituloProgramador) {
+        tituloProgramador.style.cursor = 'pointer';
+        tituloProgramador.classList.add('toggle-proyectos');
+        
+        const listaProyectos = document.querySelector('.proyectos-programador .lista-proyectos');
+        if (listaProyectos) {
+            tituloProgramador.addEventListener('click', function() {
+                const isHidden = listaProyectos.style.display === 'none';
                 
                 if (isHidden) {
-                    testimonio.style.display = 'block';
+                    listaProyectos.style.display = 'block';
                     setTimeout(() => {
-                        testimonio.style.opacity = '1';
-                        testimonio.style.transform = 'translateY(0)';
-                    }, 100 * index);
-                } else {
-                    testimonio.style.opacity = '0';
-                    testimonio.style.transform = 'translateY(20px)';
-                    setTimeout(() => {
-                        testimonio.style.display = 'none';
-                    }, 300);
-                }
-            });
-
-            toggleTestimoniosBtn.textContent = isHidden ? 'Mostrar menos testimonios' : 'Mostrar más testimonios';
-        });
-    }
-
-    // Expandir proyectos al hacer clic
-    const proyectos = document.querySelectorAll('.proyecto-3d');
-    proyectos.forEach(proyecto => {
-        const toggleBtn = proyecto.querySelector('.toggle-detalles');
-        const detalles = proyecto.querySelector('.proyecto-detalles');
-        
-        if (toggleBtn && detalles) {
-            toggleBtn.addEventListener('click', function() {
-                const isExpanded = detalles.style.display === 'block';
-                
-                if (isExpanded) {
-                    detalles.style.maxHeight = '0';
-                    detalles.style.opacity = '0';
-                    setTimeout(() => {
-                        detalles.style.display = 'none';
-                    }, 300);
-                    toggleBtn.textContent = '+';
-                } else {
-                    detalles.style.display = 'block';
-                    setTimeout(() => {
-                        detalles.style.maxHeight = '200px';
-                        detalles.style.opacity = '1';
+                        listaProyectos.style.opacity = '1';
+                        listaProyectos.style.maxHeight = '1000px';
                     }, 10);
-                    toggleBtn.textContent = '−';
+                } else {
+                    listaProyectos.style.opacity = '0';
+                    listaProyectos.style.maxHeight = '0';
+                    setTimeout(() => {
+                        listaProyectos.style.display = 'none';
+                    }, 300);
                 }
             });
         }
-    });
+    }
 
     const footer = document.querySelector('footer');
     if (footer) {
@@ -125,11 +94,9 @@ function validateForm() {
     return isValid;
 }
 
-// Función para validar un campo individual
 function validateField(field) {
     const errorElement = document.getElementById(`${field.id}-error`);
     
-    // Crear elemento de error si no existe
     if (!errorElement) {
         const errorSpan = document.createElement('span');
         errorSpan.id = `${field.id}-error`;

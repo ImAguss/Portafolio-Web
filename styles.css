@@ -238,6 +238,43 @@ main{
   font-size: 1.05rem;
 }
 
+.toggle-proyectos {
+    position: relative;
+    padding-right: 30px;
+    transition: all 0.3s ease;
+}
+
+.toggle-proyectos::after {
+    content: '▼';
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.8rem;
+    transition: transform 0.3s ease;
+}
+
+.toggle-proyectos:hover {
+    color: var(--greenLight);
+}
+
+.proyectos-programador .lista-proyectos {
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.proyectos-programador .lista-proyectos a {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.proyectos-programador .lista-proyectos a:hover .proyecto {
+    background: #504945;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
 .proyectos-artista a{
   display: flex;
   justify-content: center;
@@ -269,7 +306,6 @@ main{
   font-size: 1.3rem;
 }
 
-/* Galería de proyectos 3D */
 .galeria-3d {
   margin-top: 20px;
 }
@@ -299,26 +335,6 @@ main{
   color: var(--blueLight);
   margin: 0;
   font-size: 1.05rem;
-}
-
-.toggle-detalles {
-  background: none;
-  border: none;
-  color: var(--blueLight);
-  font-size: 1.5rem;
-  cursor: pointer;
-  width: 30px;
-  height: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  transition: all 0.3s ease;
-}
-
-.toggle-detalles:hover {
-  background: var(--blueLight);
-  color: var(--panel);
 }
 
 .proyecto-detalles {
@@ -371,74 +387,6 @@ main{
   text-decoration: none;
 }
 
-/* Testimonios */
-.testimonios {
-  margin-top: 25px;
-  padding-top: 15px;
-  border-top: 1px solid rgba(255,255,255,0.03);
-}
-
-.testimonios h2 {
-  text-align: center;
-  margin-bottom: 15px;
-  color: #EBDBB2;
-  font-size: 1.1rem;
-  letter-spacing: 1px;
-  font-weight: 700;
-}
-
-.testimonios-container {
-  margin: 30px 0;
-}
-
-.testimonio {
-  background: var(--card-bg);
-  padding: 20px;
-  border-radius: 8px;
-  margin-bottom: 20px;
-  border-left: 4px solid var(--blueLight);
-  transition: all 0.3s ease;
-  border: 1px solid rgba(255,255,255,0.05);
-}
-
-.testimonio:not(:first-child) {
-  display: none;
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-.testimonio p {
-  font-style: italic;
-  margin-bottom: 10px;
-  color: var(--text);
-  font-size: 0.95rem;
-}
-
-.testimonio span {
-  color: var(--blueLight);
-  font-weight: 600;
-  font-size: 0.9rem;
-}
-
-.toggle-testimonios {
-  background: var(--blueLight);
-  color: var(--panel);
-  border: none;
-  padding: 12px 24px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  display: block;
-  margin: 0 auto;
-  font-size: 0.95rem;
-}
-
-.toggle-testimonios:hover {
-  background: var(--greenLight);
-  transform: translateY(-2px);
-}
-
 .contacto{
   margin-top:25px;
   padding-top:15px;
@@ -484,7 +432,6 @@ main{
   text-align: center;
 }
 
-/* Estilos para validación de formulario */
 .form-group {
   margin-bottom: 20px;
   position: relative;
@@ -611,7 +558,6 @@ textarea.error {
   position: relative;
 }
 
-/* Estilos para el botón "Volver arriba" */
 .back-to-top {
   position: fixed;
   bottom: 30px;
@@ -642,7 +588,6 @@ textarea.error {
   transform: translateY(-3px);
 }
 
-/* Estilos para la fecha en el footer */
 .fecha-actual {
   text-align: center;
   margin-top: 10px;
